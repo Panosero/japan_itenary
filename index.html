@@ -1536,147 +1536,300 @@
             }, 1000);
         });
 
-        // Countdown Timer
-        function updateCountdown() {
-            const tripDate = new Date('2025-10-02');
+        // Countdown Timer - Clean, readable, and optimized
+        const TRIP_DATE = '2025-10-01';
+        const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+        const UPDATE_INTERVAL_MS = MILLISECONDS_PER_DAY; // Update every 24 hours
+        const CELEBRATION_EMOJI = '🎉';
+        
+        /**
+         * Calculates the number of days remaining until the trip
+         * @returns {number} Days remaining (positive) or 0 if trip date has passed
+         */
+        function calculateDaysRemaining() {
+            const tripDate = new Date(TRIP_DATE);
             const today = new Date();
-            const timeDiff = tripDate - today;
-            const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-            document.getElementById('countdown').textContent = days > 0 ? days : '🎉';
+            const timeDifference = tripDate - today;
+            return Math.max(0, Math.ceil(timeDifference / MILLISECONDS_PER_DAY));
         }
-        updateCountdown();
-        setInterval(updateCountdown, 86400000);
+        
+        /**
+         * Updates the countdown display with current days remaining
+         */
+        function updateCountdownDisplay() {
+            const countdownElement = document.getElementById('countdown');
+            if (!countdownElement) {
+                console.warn('Countdown element not found');
+                return;
+            }
+            
+            const daysRemaining = calculateDaysRemaining();
+            countdownElement.textContent = daysRemaining > 0 ? daysRemaining : CELEBRATION_EMOJI;
+        }
+        
+        /**
+         * Initializes the countdown timer
+         */
+        function initializeCountdown() {
+            updateCountdownDisplay();
+            setInterval(updateCountdownDisplay, UPDATE_INTERVAL_MS);
+        }
+        
+        // Start countdown
+        initializeCountdown();
 
-        // Tab Navigation
+        /**
+         * Shows the selected section and updates navigation state
+         * @param {string} sectionId - The ID of the section to show
+         */
         function showSection(sectionId) {
+            if (!sectionId) {
+                console.warn('Section ID is required');
+                return;
+            }
+            
+            // Hide all sections
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(section => section.classList.remove('active'));
             
+            // Deactivate all tab buttons
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             
-            document.getElementById(sectionId).classList.add('active');
-            event.target.classList.add('active');
-            
-            // Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Checklist Toggle
-        function toggleCheck(item) {
-            item.classList.toggle('checked');
-            const checkbox = item.querySelector('.checkbox');
-            checkbox.textContent = item.classList.contains('checked') ? '✓' : '';
-            
-            // Save to localStorage
-            saveChecklist();
-        }
-
-        function saveChecklist() {
-            const checkedItems = [];
-            document.querySelectorAll('.checklist-item.checked').forEach(item => {
-                checkedItems.push(item.querySelector('span').textContent);
-            });
-            localStorage.setItem('japanChecklist2025', JSON.stringify(checkedItems));
-        }
-
-        function loadChecklist() {
-            const saved = localStorage.getItem('japanChecklist2025');
-            if (saved) {
-                const checkedItems = JSON.parse(saved);
-                document.querySelectorAll('.checklist-item').forEach(item => {
-                    const text = item.querySelector('span').textContent;
-                    if (checkedItems.includes(text)) {
-                        item.classList.add('checked');
-                        item.querySelector('.checkbox').textContent = '✓';
-                    }
-                });
+            // Show selected section and activate corresponding button
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                event.target.classList.add('active');
+                
+                // Smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                console.warn(`Section with ID '${sectionId}' not found`);
             }
         }
 
-        // Budget Calculator
-        document.querySelectorAll('.budget-input').forEach(input => {
-            input.addEventListener('input', function() {
-                let total = 0;
-                document.querySelectorAll('.budget-input').forEach(field => {
-                    total += parseInt(field.value) || 0;
+        // Checklist Management - Clean and maintainable
+        const CHECKLIST_STORAGE_KEY = 'japanChecklist2025';
+        const CHECKED_SYMBOL = '✓';
+        const UNCHECKED_SYMBOL = '';
+        
+        /**
+         * Toggles the checked state of a checklist item
+         * @param {HTMLElement} item - The checklist item to toggle
+         */
+        function toggleCheck(item) {
+            if (!item) {
+                console.warn('Invalid checklist item');
+                return;
+            }
+            
+            item.classList.toggle('checked');
+            const checkbox = item.querySelector('.checkbox');
+            const isChecked = item.classList.contains('checked');
+            
+            if (checkbox) {
+                checkbox.textContent = isChecked ? CHECKED_SYMBOL : UNCHECKED_SYMBOL;
+            }
+            
+            saveChecklist();
+        }
+        
+        /**
+         * Saves the current checklist state to localStorage
+         */
+        function saveChecklist() {
+            try {
+                const checkedItems = Array.from(document.querySelectorAll('.checklist-item.checked'))
+                    .map(item => {
+                        const textElement = item.querySelector('span');
+                        return textElement ? textElement.textContent : '';
+                    })
+                    .filter(text => text); // Remove empty strings
+                
+                localStorage.setItem(CHECKLIST_STORAGE_KEY, JSON.stringify(checkedItems));
+            } catch (error) {
+                console.error('Failed to save checklist:', error);
+            }
+        }
+        
+        /**
+         * Loads the saved checklist state from localStorage
+         */
+        function loadChecklist() {
+            try {
+                const savedData = localStorage.getItem(CHECKLIST_STORAGE_KEY);
+                if (!savedData) return;
+                
+                const checkedItems = JSON.parse(savedData);
+                if (!Array.isArray(checkedItems)) return;
+                
+                document.querySelectorAll('.checklist-item').forEach(item => {
+                    const textElement = item.querySelector('span');
+                    if (!textElement) return;
+                    
+                    const itemText = textElement.textContent;
+                    if (checkedItems.includes(itemText)) {
+                        item.classList.add('checked');
+                        const checkbox = item.querySelector('.checkbox');
+                        if (checkbox) {
+                            checkbox.textContent = CHECKED_SYMBOL;
+                        }
+                    }
                 });
-                document.getElementById('daily-total').textContent = '¥' + total.toLocaleString();
+            } catch (error) {
+                console.error('Failed to load checklist:', error);
+            }
+        }
+
+        // Budget Calculator - Clean and efficient implementation
+        const CURRENCY_SYMBOL = '¥';
+        
+        /**
+         * Calculates and updates the total budget display
+         */
+        function updateBudgetTotal() {
+            const budgetInputs = document.querySelectorAll('.budget-input');
+            const totalElement = document.getElementById('daily-total');
+            
+            if (!totalElement) {
+                console.warn('Budget total element not found');
+                return;
+            }
+            
+            const total = Array.from(budgetInputs)
+                .map(input => parseInt(input.value) || 0)
+                .reduce((sum, value) => sum + value, 0);
+            
+            totalElement.textContent = `${CURRENCY_SYMBOL}${total.toLocaleString()}`;
+        }
+        
+        /**
+         * Initializes budget calculator event listeners
+         */
+        function initializeBudgetCalculator() {
+            document.querySelectorAll('.budget-input').forEach(input => {
+                input.addEventListener('input', updateBudgetTotal);
             });
-        });
+        }
+
+        // Mobile Experience Enhancements
+        const MOBILE_BREAKPOINT = 768;
+        const TOUCH_FEEDBACK_OPACITY = 0.7;
+        const TOUCH_FEEDBACK_RESET_OPACITY = 1;
+        
+        /**
+         * Adds touch feedback to interactive elements on mobile
+         */
+        function addTouchFeedback() {
+            const interactiveElements = document.querySelectorAll('.tab-btn, .map-btn, .checklist-item, .feature');
+            
+            interactiveElements.forEach(element => {
+                element.addEventListener('touchstart', () => {
+                    element.style.opacity = TOUCH_FEEDBACK_OPACITY;
+                });
+                
+                ['touchend', 'touchcancel'].forEach(eventType => {
+                    element.addEventListener(eventType, () => {
+                        element.style.opacity = TOUCH_FEEDBACK_RESET_OPACITY;
+                    });
+                });
+            });
+        }
+        
+        /**
+         * Improves tab navigation for mobile devices
+         */
+        function improveMobileTabNavigation() {
+            const navTabs = document.querySelector('.nav-tabs');
+            if (!navTabs) return;
+            
+            let isScrolling = false;
+            
+            navTabs.addEventListener('touchstart', () => {
+                isScrolling = false;
+            });
+            
+            navTabs.addEventListener('touchmove', () => {
+                isScrolling = true;
+            });
+            
+            // Prevent click if user was scrolling
+            navTabs.addEventListener('click', (event) => {
+                if (isScrolling) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+            });
+        }
+        
+        /**
+         * Scrolls the active tab into view on mobile
+         */
+        function scrollActiveTabIntoView() {
+            const activeTab = document.querySelector('.tab-btn.active');
+            if (activeTab) {
+                activeTab.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+        }
+        
+        /**
+         * Enhances the showSection function for mobile
+         */
+        function enhanceShowSectionForMobile() {
+            const originalShowSection = window.showSection;
+            
+            window.showSection = function(sectionId) {
+                originalShowSection(sectionId);
+                if (window.innerWidth <= MOBILE_BREAKPOINT) {
+                    setTimeout(scrollActiveTabIntoView, 100);
+                }
+            };
+        }
+        
+        /**
+         * Initializes mobile-specific enhancements
+         */
+        function initializeMobileEnhancements() {
+            if (window.innerWidth <= MOBILE_BREAKPOINT) {
+                addTouchFeedback();
+                improveMobileTabNavigation();
+                enhanceShowSectionForMobile();
+            }
+        }
 
         // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
             loadChecklist();
-            
-            // Mobile-specific improvements
-            if (window.innerWidth <= 768) {
-                // Add touch feedback for mobile
-                document.querySelectorAll('.tab-btn, .map-btn, .checklist-item, .feature').forEach(element => {
-                    element.addEventListener('touchstart', function() {
-                        this.style.opacity = '0.7';
-                    });
-                    
-                    element.addEventListener('touchend', function() {
-                        this.style.opacity = '1';
-                    });
-                    
-                    element.addEventListener('touchcancel', function() {
-                        this.style.opacity = '1';
-                    });
-                });
-
-                // Improve tab scrolling on mobile
-                const navTabs = document.querySelector('.nav-tabs');
-                let isScrolling = false;
-
-                navTabs.addEventListener('touchstart', function() {
-                    isScrolling = false;
-                });
-
-                navTabs.addEventListener('touchmove', function() {
-                    isScrolling = true;
-                });
-
-                // Prevent click if user was scrolling
-                navTabs.addEventListener('click', function(e) {
-                    if (isScrolling) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                });
-
-                // Auto-scroll active tab into view
-                function scrollActiveTabIntoView() {
-                    const activeTab = document.querySelector('.tab-btn.active');
-                    if (activeTab) {
-                        activeTab.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'nearest',
-                            inline: 'center'
-                        });
-                    }
-                }
-
-                // Call on tab change
-                const originalShowSection = window.showSection;
-                window.showSection = function(sectionId) {
-                    originalShowSection(sectionId);
-                    setTimeout(scrollActiveTabIntoView, 100);
-                };
-            }
+            initializeBudgetCalculator();
+            initializeMobileEnhancements();
         });
 
-        // Add keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key >= '1' && e.key <= '6') {
-                const tabs = document.querySelectorAll('.tab-btn');
-                const index = parseInt(e.key) - 1;
-                if (tabs[index]) {
-                    tabs[index].click();
+        // Keyboard Navigation Enhancement
+        const TAB_KEYS = ['1', '2', '3', '4', '5', '6'];
+        
+        /**
+         * Adds keyboard navigation for tabs (1-6 keys)
+         */
+        function initializeKeyboardNavigation() {
+            document.addEventListener('keydown', (event) => {
+                if (TAB_KEYS.includes(event.key)) {
+                    const tabIndex = parseInt(event.key) - 1;
+                    const tabs = document.querySelectorAll('.tab-btn');
+                    
+                    if (tabs[tabIndex]) {
+                        tabs[tabIndex].click();
+                    }
                 }
-            }
-        });
+            });
+        }
+        
+        // Initialize keyboard navigation
+        initializeKeyboardNavigation();
     </script>
 </body>
 </html>
