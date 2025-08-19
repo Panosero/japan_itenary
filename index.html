@@ -1208,7 +1208,7 @@
                 <div class="logo">🗾</div>
                 <div>
                     <h1>Japan 2025</h1>
-                    <p class="subtitle">PANOS & ATHINA</p>
+                    <p class="subtitle">PANOS & ATHINA · OCT 2-10, 2025</p>
                 </div>
             </div>
             <div class="countdown-section">
@@ -1225,9 +1225,10 @@
 
         <nav class="nav-tabs" role="tablist" aria-label="Sections">
             <button id="overview-tab" class="tab-btn active" role="tab" aria-selected="true" aria-controls="overview" onclick="showSection('overview', this)">Overview</button>
-            <button id="itinerary-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="itinerary" onclick="showSection('itinerary', this)">Itinerary</button>
+            <button id="itinerary-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="itinerary" onclick="showSection('itinerary', this)">Daily Plan</button>
             <button id="transport-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="transport" onclick="showSection('transport', this)">Transport</button>
             <button id="essentials-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="essentials" onclick="showSection('essentials', this)">Essentials</button>
+            <button id="checklist-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="checklist" onclick="showSection('checklist', this)">To-Do</button>
             <button id="japanese-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="japanese" onclick="showSection('japanese', this)">Japanese</button>
         </nav>
 
@@ -1235,40 +1236,97 @@
     <section id="overview" class="content-section active" role="tabpanel" tabindex="-1" aria-labelledby="overview-tab">
             <div class="grid">
                 <div class="card">
-                    <span class="card-icon">🏨</span>
-                    <h3>Accommodation Details</h3>
+                    <span class="card-icon">✈️</span>
+                    <h3>Flights (Confirmed)</h3>
                     <div style="background: var(--surface-hover); padding: 1.5rem; border-radius: calc(var(--border-radius) / 2); margin-bottom: 1.5rem; border-left: 4px solid var(--primary);">
-                        <h4 style="color: var(--primary); margin: 0 0 0.5rem 0; font-size: 1.125rem;">
-                            <a href="https://www.booking.com/hotel/jp/mesm-tokyo-autograph-collection.html" target="_blank" style="color: var(--primary); text-decoration: none; border-bottom: 1px dotted var(--primary);">
-                                mesm Tokyo, Autograph Collection ⭐⭐⭐⭐⭐
-                            </a>
+                        <h4 style="color: var(--primary); margin: 0 0 1rem 0; font-size: 1.125rem;">
+                            <strong>BA0007</strong> — Outbound
                         </h4>
-                        <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">2 adults • 3 nights • 1 room</p>
-                        <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
                             <div>
-                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Check-in</span>
-                                <p style="margin: 0; font-weight: 600; color: var(--text);">Thu 2 Oct 2025</p>
-                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">from 15:00</p>
+                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Departure</span>
+                                <p style="margin: 0; font-weight: 600; color: var(--text);">London Heathrow (T5)</p>
+                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">Wed Oct 1 • 09:20</p>
                             </div>
-                            <div>
-                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Check-out</span>
-                                <p style="margin: 0; font-weight: 600; color: var(--text);">Sun 5 Oct 2025</p>
-                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">until 12:00</p>
+                            <div style="text-align: right;">
+                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Arrival</span>
+                                <p style="margin: 0; font-weight: 600; color: var(--text);">Tokyo Haneda (T3)</p>
+                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">Thu Oct 2 • 07:00</p>
                             </div>
                         </div>
                     </div>
+                    
+                    <div style="background: var(--surface-hover); padding: 1.5rem; border-radius: calc(var(--border-radius) / 2); margin-bottom: 1.5rem; border-left: 4px solid var(--primary);">
+                        <h4 style="color: var(--primary); margin: 0 0 1rem 0; font-size: 1.125rem;">
+                            <strong>BA0006</strong> — Return
+                        </h4>
+                        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                            <div>
+                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Departure</span>
+                                <p style="margin: 0; font-weight: 600; color: var(--text);">Tokyo Haneda (T3)</p>
+                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">Fri Oct 10 • 13:05</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Arrival</span>
+                                <p style="margin: 0; font-weight: 600; color: var(--text);">London Heathrow (T5)</p>
+                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">Fri Oct 10 • 19:55</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1rem; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: calc(var(--border-radius) / 2); text-align: center;">
+                            <p style="margin: 0; font-size: 0.875rem; color: var(--text);">🛂 <strong>Both flights use Haneda Terminal 3 (HND T3)</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">🏨</span>
+                    <h3>Accommodation Overview</h3>
                     <ul style="list-style: none; padding: 0;">
                         <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
-                            <strong style="color: var(--primary);">OCT 2-5:</strong> mesm Tokyo (3 nights)
+                            <strong style="color: var(--primary);">Tokyo (3 nights):</strong> mesm Tokyo — Thu 2 → Sun 5 Oct
                         </li>
                         <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
-                            <strong style="color: var(--primary);">OCT 5-7:</strong> FUFU HAKONE (2 nights)
+                            <strong style="color: var(--primary);">Hakone (2 nights):</strong> FUFU HAKONE — Sun 5 → Tue 7 Oct
                         </li>
                         <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
-                            <strong style="color: var(--primary);">OCT 7-10:</strong> Kyoto (3 nights)
+                            <strong style="color: var(--primary);">Kyoto (3 nights):</strong> (TBD) — Tue 7 → Fri 10 Oct
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong style="color: var(--primary);">Day Trip:</strong> Nara from Kyoto — Thu 9 Oct
                         </li>
                         <li style="padding: 0.75rem 0;">
-                            <strong style="color: var(--primary);">OCT 10:</strong> Departure Day ✈️
+                            <strong style="color: var(--primary);">Departure:</strong> Fly home from <strong>HND T3</strong> Fri Oct 10 13:05
+                        </li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text);">Daily Outline</h4>
+                    <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Oct 2:</strong> Arrive HND → mesm → Hamarikyu/Shimbashi → Omoide Yokocho (light)
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Oct 3:</strong> Sensō‑ji → Skytree → Shibuya
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Oct 4:</strong> Tsukiji → teamLab Borderless → Shinjuku Gyoen → Golden Gai
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Oct 5:</strong> Romancecar → Lake Ashi cruise → Hakone Shrine → onsen
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Oct 6:</strong> Owakudani → Ropeway → Open‑Air Museum → onsen
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Oct 7:</strong> Odawara→Kyoto Hikari → Gion → Ponto‑chō
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Oct 8:</strong> Fushimi Inari (early) → Arashiyama → Tenryū‑ji
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Oct 9:</strong> Nara day trip: Nara Park, Tōdai‑ji, Kasuga Taisha
+                        </li>
+                        <li style="padding: 0.5rem 0;">
+                            <strong>Oct 10:</strong> Kyoto→Tokyo (early) → <strong>HND T3</strong> → Fly 13:05
                         </li>
                     </ul>
                 </div>
@@ -1298,63 +1356,62 @@
                         <div style="margin-top: 1rem; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: calc(var(--border-radius) / 2);">
                             <p style="margin: 0; font-size: 0.875rem; color: var(--text);">🚗 <strong>From Tokyo:</strong> 85 min via Romance Car + 15 min taxi/shuttle</p>
                             <p style="margin: 0.5rem 0 0 0; font-size: 0.875rem; color: var(--text);">🏔️ <strong>Features:</strong> Private onsen in room, Mount Fuji views, kaiseki dining</p>
-                            <p style="margin: 0.5rem 0 0 0; font-size: 0.875rem; color: var(--text);">🛏️ <strong>Room:</strong> Traditional tatami suite with in-room hot spring bath</p>
-                            <p style="margin: 0.5rem 0 0 0; font-size: 0.875rem; color: var(--text);">
-                                📞 <strong>Phone:</strong> 
-                                <a href="tel:+81460833111" style="color: var(--primary); text-decoration: none;">+81 460-83-3111</a>
-                            </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
-                    <span class="card-icon">🏯</span>
-                    <h3>Kyoto Accommodation</h3>
-                    <div style="background: var(--surface-hover); padding: 1.5rem; border-radius: calc(var(--border-radius) / 2); margin-bottom: 1.5rem; border-left: 4px solid var(--primary);">
-                        <h4 style="color: var(--primary); margin: 0 0 0.5rem 0; font-size: 1.125rem;">
-                            <a href="https://maps.google.com/?q=Dusit+Thani+Kyoto" target="_blank" style="color: var(--primary); text-decoration: none; border-bottom: 1px dotted var(--primary);">
-                                Dusit Thani Kyoto ⭐⭐⭐⭐⭐
-                            </a>
-                        </h4>
-                        <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">2 adults • 3 nights • 1 room</p>
-                        <div style="display: flex; gap: 2rem; margin-top: 1rem;">
-                            <div>
-                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Check-in</span>
-                                <p style="margin: 0; font-weight: 600; color: var(--text);">Tue 7 Oct 2025</p>
-                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">15:00 - 00:00</p>
-                            </div>
-                            <div>
-                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Check-out</span>
-                                <p style="margin: 0; font-weight: 600; color: var(--text);">Fri 10 Oct 2025</p>
-                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">until 12:00</p>
-                            </div>
-                        </div>
-                        <div style="margin-top: 1rem;">
-                            <a href="https://maps.google.com/?q=Dusit+Thani+Kyoto" target="_blank" class="map-btn">📍 View Map</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <span class="card-icon">🗾</span>
-                    <h3>5 Cities Experience</h3>
+                    <span class="card-icon">🧭</span>
+                    <h3>How to Move Around</h3>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">🗼 <strong>Tokyo</strong> - Ultra-modern metropolis</li>
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">♨️ <strong>Hakone</strong> - Mountain onsen retreat</li>
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">⛩️ <strong>Kyoto</strong> - Ancient capital</li>
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">🦌 <strong>Nara</strong> - Sacred deer park</li>
-                        <li style="padding: 0.75rem 0;">🍜 <strong>Osaka</strong> - Street food paradise</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>IC Cards:</strong> Welcome Suica / PASMO — tap everywhere; reload at machines or konbini
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Apps:</strong> Google Maps (offline), Japan Transit Planner/NAVITIME, Google Translate camera
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Luggage:</strong> Yamato/TA‑Q‑BIN hotel↔hotel; travel light on trains
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Stations:</strong> Arrive 10–15 min early; bilingual signage; queue at car markers
+                        </li>
+                        <li style="padding: 0.75rem 0;">
+                            <strong>Etiquette:</strong> Quiet on trains; no eating on local lines; stand <strong>left</strong> on escalators (right in Osaka)
+                        </li>
                     </ul>
                 </div>
 
                 <div class="card">
-                    <span class="card-icon">🚄</span>
-                    <h3>Seamless Transport</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">7-Day JR Pass included</li>
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">Shinkansen bullet trains</li>
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">IC Cards for local transit</li>
-                        <li style="padding: 0.75rem 0;">All routes mapped & timed</li>
+                    <span class="card-icon">🌟</span>
+                    <h3>Unique & Unmissable</h3>
+                    
+                    <h4 style="margin-bottom: 0.5rem;">Tokyo</h4>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem; font-size: 0.875rem;">
+                        <li style="padding: 0.25rem 0;">• Head spa (60–90 min) near Ginza/Shimbashi</li>
+                        <li style="padding: 0.25rem 0;">• Classic barber hot‑towel shave (Hibiya/Ginza)</li>
+                        <li style="padding: 0.25rem 0;">• Taiko drumming intro class (Aoyama/Asakusa)</li>
+                        <li style="padding: 0.25rem 0;">• Kabuki‑za single‑act ticket (English captions)</li>
+                        <li style="padding: 0.25rem 0;">• Kappabashi 'Kitchen Town' (knives/ceramics/fake food)</li>
+                        <li style="padding: 0.25rem 0;">• Depachika tasting (Isetan Shinjuku / Mitsukoshi)</li>
+                        <li style="padding: 0.25rem 0;">• Kissaten & jazz‑kissa crawl (vintage coffee + vinyl)</li>
+                    </ul>
+
+                    <h4 style="margin-bottom: 0.5rem;">Hakone</h4>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem; font-size: 0.875rem;">
+                        <li style="padding: 0.25rem 0;">• Private onsen ritual: one daylight soak, one under the stars</li>
+                        <li style="padding: 0.25rem 0;">• Yosegi marquetry workshop (1–2h)</li>
+                        <li style="padding: 0.25rem 0;">• Owakudani black eggs (ropeway weather‑dependent)</li>
+                    </ul>
+
+                    <h4 style="margin-bottom: 0.5rem;">Kyoto</h4>
+                    <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
+                        <li style="padding: 0.25rem 0;">• Private tea ceremony (Gion, 50–60 min)</li>
+                        <li style="padding: 0.25rem 0;">• Wagashi (nerikiri) sweets class</li>
+                        <li style="padding: 0.25rem 0;">• Kimono rental day near Yasaka/Kiyomizu‑dera</li>
+                        <li style="padding: 0.25rem 0;">• Calligraphy (shodō) on tatami</li>
+                        <li style="padding: 0.25rem 0;">• Aritsugu knives + engraving (Nishiki)</li>
+                        <li style="padding: 0.25rem 0;">• Incense 'listening' (kōdō intro) at a historic house</li>
                     </ul>
                 </div>
             </div>
@@ -1370,7 +1427,6 @@
                     <h4>Curated Dining</h4>
                     <p>Best restaurants selected</p>
                 </div>
-                
                 <div class="feature">
                     <span class="feature-icon">🗣️</span>
                     <h4>Language Guide</h4>
@@ -1389,45 +1445,39 @@
             </div>
         </section>
 
-        <!-- Itinerary Section -->
+        <!-- Daily Plan Section -->
     <section id="itinerary" class="content-section" role="tabpanel" tabindex="-1" aria-labelledby="itinerary-tab">
             <div class="day-card">
                 <div class="day-header">
                     <div>
                         <div class="day-number">01</div>
-                        <div class="day-title">Welcome to Japan</div>
+                        <div class="day-title">Welcome to Tokyo (mesm)</div>
                     </div>
                     <div class="day-date">OCTOBER 2</div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="time-label">MORNING</div>
-                            <div class="activity">Arrive at Narita/Haneda Airport</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">AFTERNOON</div>
-                            <div class="activity">Check into <span class="highlight">mesm Tokyo, Autograph Collection</span></div>
+                            <div class="time-label">MOVE</div>
+                            <div class="activity">Arrive <strong>HND T3</strong> → Tokyo Monorail to Hamamatsuchō → walk to mesm</div>
                             <a href="https://maps.google.com/?q=mesm+Tokyo+Autograph+Collection" target="_blank" class="map-btn">
                                 📍 View Map
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">EVENING</div>
-                            <div class="activity">Explore <span class="highlight">Omoide Yokocho</span></div>
+                            <div class="time-label">SEE</div>
+                            <div class="activity">Hamarikyu Gardens; Shimbashi backstreets; <span class="highlight">Omoide Yokocho</span> (light night)</div>
+                            <a href="https://maps.google.com/?q=Hamarikyu+Gardens+Tokyo" target="_blank" class="map-btn">
+                                📍 Hamarikyu Gardens
+                            </a>
                             <a href="https://maps.google.com/?q=Omoide+Yokocho+Tokyo" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Omoide Yokocho
                             </a>
                         </div>
-                    </div>
-                    <div class="info-box must">
-                        <h4>✈️ Airport to Tokyo Travel</h4>
-                        <p>• <strong>Narita Airport:</strong> 60-90 min to Tokyo by Narita Express or Skyliner</p>
-                        <p>• <strong>Haneda Airport:</strong> 30-45 min to Tokyo by monorail or Keikyu Line</p>
-                        <p>• <strong>To mesm Tokyo:</strong> Located in Shimbashi area, easy train access</p>
-                        <p>• <strong>IC Card:</strong> Buy Suica/Pasmo at airport for local transport (¥1,000-2,000)</p>
-                        <p>• <strong>Cash:</strong> Withdraw yen at 7-Eleven ATMs (most international-friendly)</p>
-                        <p>• <strong>First Meal:</strong> Convenience store bento or airport restaurant are safe bets</p>
+                        <div class="timeline-item">
+                            <div class="time-label">EAT</div>
+                            <div class="activity">Shimbashi ramen/izakaya; konbini bento if jet‑lagged</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1436,47 +1486,33 @@
                 <div class="day-header">
                     <div>
                         <div class="day-number">02</div>
-                        <div class="day-title">Tokyo Essentials</div>
+                        <div class="day-title">Asakusa → Skytree → Shibuya</div>
                     </div>
                     <div class="day-date">OCTOBER 3</div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="time-label">9:00 AM</div>
-                            <div class="activity"><span class="highlight">Senso-ji Temple</span> - Tokyo's oldest</div>
+                            <div class="time-label">MOVE</div>
+                            <div class="activity">Ginza Line to Asakusa; Hanzomon Line to Skytree; Ginza Line to Shibuya</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="time-label">SEE</div>
+                            <div class="activity"><span class="highlight">Sensō‑ji</span> (early) & Nakamise; <span class="highlight">Skytree</span> (timed tix); Shibuya Crossing after dark</div>
                             <a href="https://maps.google.com/?q=Sensoji+Temple+Tokyo" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Sensō-ji Temple
                             </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">12:00 PM</div>
-                            <div class="activity">Traditional lunch in Asakusa</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">2:00 PM</div>
-                            <div class="activity">
-                                <a href="https://www.tokyo-skytree.jp/en/ticket/" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--primary);">
-                                    Tokyo Skytree observation deck
-                                </a>
-                            </div>
                             <a href="https://maps.google.com/?q=Tokyo+Skytree" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Tokyo Skytree
+                            </a>
+                            <a href="https://maps.google.com/?q=Shibuya+Crossing+Tokyo" target="_blank" class="map-btn">
+                                📍 Shibuya Crossing
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">6:00 PM</div>
-                            <div class="activity"><span class="highlight">Shibuya Crossing</span> experience</div>
-                            <a href="https://maps.google.com/?q=Shibuya+Crossing+Tokyo" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
+                            <div class="time-label">EAT</div>
+                            <div class="activity">Asakusa tempura/unagi & sweets; Shibuya ramen/yakitori</div>
                         </div>
-                    </div>
-                    <div class="info-box tips">
-                        <h4>💡 Pro Tips</h4>
-                        <p>• Buy omamori (lucky charms) at Senso-ji</p>
-                        <p>• Best crossing view from Starbucks 2nd floor</p>
-                        <p>• Don Quijote megastore for souvenirs</p>
                     </div>
                 </div>
             </div>
@@ -1485,48 +1521,44 @@
                 <div class="day-header">
                     <div>
                         <div class="day-number">03</div>
-                        <div class="day-title">Digital Art & Gardens</div>
+                        <div class="day-title">Tsukiji → teamLab Borderless → Shinjuku</div>
                     </div>
                     <div class="day-date">OCTOBER 4</div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="time-label">8:00 AM</div>
-                            <div class="activity"><span class="highlight">Tsukiji Outer Market</span> breakfast</div>
-                            <a href="https://maps.google.com/?q=Tsukiji+Outer+Market+Tokyo" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
+                            <div class="time-label">MOVE</div>
+                            <div class="activity">To Azabudai Hills (Hibiya Line to Kamiyachō / Namboku to Roppongi‑itchōme); JR Yamanote between hubs</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">10:00 AM</div>
-                            <div class="activity">
-                                <a href="https://www.teamlab.art/e/borderless/" target="_blank" style="color: var(--text); text-decoration: none;">
-                                    <span class="highlight">TeamLab Borderless</span> digital museum
+                            <div class="time-label">SEE</div>
+                            <div class="activity">Tsukiji breakfast crawl; <span class="highlight">
+                                <a href="https://www.teamlab.art/e/borderless/" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dotted var(--primary);">
+                                    teamLab Borderless
                                 </a>
-                            </div>
+                            </span>; Shinjuku Gyoen; Golden Gai</div>
+                            <a href="https://maps.google.com/?q=Tsukiji+Outer+Market+Tokyo" target="_blank" class="map-btn">
+                                📍 Tsukiji Market
+                            </a>
                             <a href="https://maps.google.com/?q=teamLab+Borderless+Tokyo" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 teamLab Borderless
                             </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">2:00 PM</div>
-                            <div class="activity">Shinjuku Gyoen National Garden</div>
                             <a href="https://maps.google.com/?q=Shinjuku+Gyoen+Tokyo" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Shinjuku Gyoen
+                            </a>
+                            <a href="https://maps.google.com/?q=Golden+Gai+Shinjuku" target="_blank" class="map-btn">
+                                📍 Golden Gai
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">EVENING</div>
-                            <div class="activity">Golden Gai bar hopping</div>
-                            <a href="https://maps.google.com/?q=Golden+Gai+Shinjuku" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
+                            <div class="time-label">EAT</div>
+                            <div class="activity">Tsukiji sushi/tamagoyaki; Shinjuku izakaya (small cover common)</div>
                         </div>
                     </div>
                     <div class="info-box must">
                         <h4>⚡ Must Know</h4>
-                        <p>• Book <a href="https://www.teamlab.art/e/borderless/" target="_blank" style="color: var(--primary); text-decoration: none; border-bottom: 1px dotted var(--primary);">TeamLab tickets online</a> - sells out!</p>
+                        <p>• Book <a href="https://www.teamlab.art/e/borderless/" target="_blank" style="color: var(--primary); text-decoration: none; border-bottom: 1px dotted var(--primary);">teamLab tickets online</a> - sells out!</p>
                         <p>• Try tamagoyaki (egg omelet) at Tsukiji</p>
                         <p>• Golden Gai bars charge ¥500-1000 cover</p>
                     </div>
@@ -1537,48 +1569,39 @@
                 <div class="day-header">
                     <div>
                         <div class="day-number">04</div>
-                        <div class="day-title">Hakone Onsen Experience</div>
+                        <div class="day-title">Tokyo → Hakone (FUFU)</div>
                     </div>
                     <div class="day-date">OCTOBER 5</div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="time-label">10:00 AM</div>
-                            <div class="activity">Check out of mesm Tokyo</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">11:30 AM</div>
-                            <div class="activity">Take <span class="highlight">
+                            <div class="time-label">MOVE</div>
+                            <div class="activity">Shinjuku → <span class="highlight">
                                 <a href="https://www.odakyu.jp/english/romancecar/" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px dotted var(--primary);">
-                                    Odakyu Romance Car
+                                    Odakyu Romancecar
                                 </a>
-                            </span> to Hakone</div>
+                            </span> → Hakone‑Yumoto (~80–85m); taxi/shuttle to FUFU; consider Hakone <strong>Freepass</strong></div>
                             <a href="https://maps.google.com/?q=Hakone+Yumoto+Station" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Hakone-Yumoto
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">1:00 PM</div>
-                            <div class="activity">Check into <span class="highlight">FUFU HAKONE</span> luxury onsen resort</div>
-                            <a href="https://maps.google.com/?q=FUFU+Hakone+Hotel" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">3:00 PM</div>
-                            <div class="activity"><span class="highlight">Lake Ashi</span> pirate ship cruise</div>
+                            <div class="time-label">SEE</div>
+                            <div class="activity"><span class="highlight">Lake Ashi cruise</span>; Hakone Shrine lakeside torii; onsen + kaiseki (ryokan)</div>
                             <a href="https://maps.google.com/?q=Lake+Ashi+Hakone" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Lake Ashi
+                            </a>
+                            <a href="https://maps.google.com/?q=Hakone+Shrine" target="_blank" class="map-btn">
+                                📍 Hakone Shrine
+                            </a>
+                            <a href="https://maps.google.com/?q=FUFU+Hakone+Hotel" target="_blank" class="map-btn">
+                                📍 FUFU HAKONE
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">5:00 PM</div>
-                            <div class="activity">Traditional onsen experience</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">7:00 PM</div>
-                            <div class="activity">Kaiseki dinner at FUFU HAKONE</div>
+                            <div class="time-label">EAT</div>
+                            <div class="activity">Ryokan kaiseki dinner (pre‑confirm time)</div>
                         </div>
                     </div>
                     <div class="info-box must">
@@ -1587,7 +1610,6 @@
                         <p>• <strong>From Station to Hotel:</strong> 10-minute taxi ride or hotel shuttle</p>
                         <p>• <strong>Romance Car Reservation:</strong> Book seats online in advance</p>
                         <p>• <strong>Luggage:</strong> Forward luggage to hotel from Tokyo station</p>
-                        <p>• <strong>Weather:</strong> Check conditions for Mount Fuji visibility</p>
                     </div>
                 </div>
             </div>
@@ -1603,45 +1625,29 @@
                 <div class="day-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="time-label">8:00 AM</div>
-                            <div class="activity">Traditional Japanese breakfast at FUFU HAKONE</div>
+                            <div class="time-label">MOVE</div>
+                            <div class="activity">Ropeway to <span class="highlight">Owakudani</span> → Togendai; cruise Lake Ashi; bus/train back (Freepass)</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">9:30 AM</div>
-                            <div class="activity">Morning <span class="highlight">Owakudani Valley</span> exploration</div>
+                            <div class="time-label">SEE</div>
+                            <div class="activity">Owakudani volcanic valley; Hakone Shrine; <span class="highlight">Open‑Air Museum</span></div>
                             <a href="https://maps.google.com/?q=Owakudani+Hakone" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Owakudani Valley
                             </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">12:00 PM</div>
-                            <div class="activity">Lunch with Mount Fuji views</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">2:00 PM</div>
-                            <div class="activity"><span class="highlight">Hakone Shrine</span> & Torii in Lake</div>
-                            <a href="https://maps.google.com/?q=Hakone+Shrine" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">4:00 PM</div>
-                            <div class="activity">Hakone Open-Air Museum</div>
                             <a href="https://maps.google.com/?q=Hakone+Open+Air+Museum" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Open-Air Museum
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">EVENING</div>
-                            <div class="activity">Second night onsen experience & kaiseki dinner</div>
+                            <div class="time-label">EAT</div>
+                            <div class="activity">Soba/curry‑pan near Gora; lakeside coffee & sweets</div>
                         </div>
                     </div>
                     <div class="info-box must">
-                        <h4>⛰️ Hakone Extended Experience</h4>
+                        <h4>⛰️ Hakone Tips</h4>
                         <p>• Try the famous Hakone black eggs at Owakudani - said to add 7 years to life!</p>
-                        <p>• Hakone Shrine's red torii gate in Lake Ashi is iconic - best photos in afternoon</p>
-                        <p>• Open-Air Museum combines art with nature - perfect for rainy weather</p>
-                        <p>• Second onsen experience - try different baths for variety</p>
+                        <p>• Hakone Shrine's red torii gate in Lake Ashi is iconic</p>
+                        <p>• Open-Air Museum combines art with nature</p>
                     </div>
                 </div>
             </div>
@@ -1650,66 +1656,39 @@
                 <div class="day-header">
                     <div>
                         <div class="day-number">06</div>
-                        <div class="day-title">Hakone to Kyoto Journey</div>
+                        <div class="day-title">Odawara→Kyoto Hikari → Gion → Ponto‑chō</div>
                     </div>
                     <div class="day-date">OCTOBER 7</div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="time-label">8:00 AM</div>
-                            <div class="activity">Traditional Japanese breakfast & check out</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">10:00 AM</div>
-                            <div class="activity">Check out FUFU HAKONE & travel to Odawara Station</div>
-                            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;">⏱️ Hotel to station: 15-20 min by taxi/shuttle</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">11:00 AM</div>
-                            <div class="activity">Local train: Hakone-Yumoto → Odawara Station</div>
-                            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;">⏱️ Journey time: 15 minutes</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">12:00 PM</div>
-                            <div class="activity">Shinkansen Hikari: Odawara → Kyoto</div>
+                            <div class="time-label">MOVE</div>
+                            <div class="activity">Taxi/shuttle to Hakone‑Yumoto (15m) → local to Odawara (15m) → <span class="highlight">Hikari</span> to Kyoto (~2h15)</div>
                             <a href="https://maps.google.com/?q=Kyoto+Station" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
-                            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-top: 0.5rem;">⏱️ Journey time: 2 hours 15 minutes</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">3:00 PM</div>
-                            <div class="activity">Check into <span class="highlight">Dusit Thani Kyoto</span></div>
-                            <a href="https://maps.google.com/?q=Dusit+Thani+Kyoto" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Kyoto Station
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">5:00 PM</div>
-                            <div class="activity">Explore <span class="highlight">Gion District</span></div>
+                            <div class="time-label">SEE</div>
+                            <div class="activity">Check‑in; evening <span class="highlight">Gion</span> lanes; Yasaka Shrine; <span class="highlight">Ponto‑chō</span> dinner</div>
                             <a href="https://maps.google.com/?q=Gion+District+Kyoto" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Gion District
+                            </a>
+                            <a href="https://maps.google.com/?q=Pontocho+Alley+Kyoto" target="_blank" class="map-btn">
+                                📍 Pontocho Alley
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">EVENING</div>
-                            <div class="activity">Welcome dinner in <span class="highlight">Pontocho Alley</span></div>
-                            <a href="https://maps.google.com/?q=Pontocho+Alley+Kyoto" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
+                            <div class="time-label">EAT</div>
+                            <div class="activity">Kyō‑cuisine: obanzai or casual kaiseki</div>
                         </div>
                     </div>
                     <div class="info-box food">
-                        <h4>🏯 Kyoto Welcome</h4>
                         <h4>🚗 Hakone → Kyoto Travel Guide</h4>
                         <p>• <strong>Total Journey:</strong> 3 hours 15 minutes (hotel to Kyoto accommodation)</p>
-                        <p>• <strong>Step 1:</strong> FUFU HAKONE → Hakone-Yumoto (15 min taxi/shuttle)</p>
-                        <p>• <strong>Step 2:</strong> Hakone-Yumoto → Odawara (15 min local train)</p>
-                        <p>• <strong>Step 3:</strong> Odawara → Kyoto (2h 15min Shinkansen Hikari)</p>
-                        <p>• <strong>Luggage Tip:</strong> Use yamato takkyubin service to forward luggage</p>
                         <p>• <strong>Seat Reservations:</strong> Book window seats on Mount Fuji side (right side going to Kyoto)</p>
-                        <p>• <strong>Platform Info:</strong> Odawara Station has clear English signage for Shinkansen</p>
+                        <p>• <strong>Luggage Tip:</strong> Use yamato takkyubin service to forward luggage</p>
                     </div>
                 </div>
             </div>
@@ -1718,43 +1697,32 @@
                 <div class="day-header">
                     <div>
                         <div class="day-number">07</div>
-                        <div class="day-title">Kyoto Temples & Bamboo</div>
+                        <div class="day-title">Fushimi Inari (early) → Arashiyama → Tenryū‑ji</div>
                     </div>
                     <div class="day-date">OCTOBER 8</div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="time-label">8:00 AM</div>
-                            <div class="activity">Early morning at <span class="highlight">Fushimi Inari Shrine</span></div>
+                            <div class="time-label">MOVE</div>
+                            <div class="activity">JR Nara Line to Inari (5m); JR Sagano to Saga‑Arashiyama or Hankyū to Arashiyama</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="time-label">SEE</div>
+                            <div class="activity"><span class="highlight">Fushimi Inari</span> at sunrise; <span class="highlight">Bamboo Grove</span> (late morning); Tenryū‑ji gardens</div>
                             <a href="https://maps.google.com/?q=Fushimi+Inari+Shrine+Kyoto" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Fushimi Inari Shrine
                             </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">11:00 AM</div>
-                            <div class="activity"><span class="highlight">Bamboo Grove</span> in Arashiyama</div>
                             <a href="https://maps.google.com/?q=Bamboo+Grove+Arashiyama+Kyoto" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Bamboo Grove
                             </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">1:00 PM</div>
-                            <div class="activity">Traditional lunch in Arashiyama</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">3:00 PM</div>
-                            <div class="activity"><span class="highlight">Tenryu-ji Temple</span> & Gardens</div>
                             <a href="https://maps.google.com/?q=Tenryu-ji+Temple+Kyoto" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Tenryu-ji Temple
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">6:00 PM</div>
-                            <div class="activity">Dinner in <span class="highlight">Pontocho Alley</span></div>
-                            <a href="https://maps.google.com/?q=Pontocho+Alley+Kyoto" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
+                            <div class="time-label">EAT</div>
+                            <div class="activity">Arashiyama tofu/yuba; matcha desserts along Sagano street</div>
                         </div>
                     </div>
                     <div class="info-box tips">
@@ -1762,7 +1730,6 @@
                         <p>• Fushimi Inari: Early morning for fewer crowds and better photos</p>
                         <p>• Wear comfortable shoes - lots of stairs at Fushimi Inari</p>
                         <p>• Bamboo Grove: Best lighting between 11am-2pm</p>
-                        <p>• Try kaiseki dinner - Kyoto's refined cuisine specialty</p>
                     </div>
                 </div>
             </div>
@@ -1771,57 +1738,41 @@
                 <div class="day-header">
                     <div>
                         <div class="day-number">08</div>
-                        <div class="day-title">Nara Day Trip</div>
+                        <div class="day-title">Nara day trip: Nara Park, Tōdai‑ji, Kasuga Taisha</div>
                     </div>
                     <div class="day-date">OCTOBER 9</div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="time-label">9:00 AM</div>
-                            <div class="activity">JR train to <span class="highlight">Nara</span></div>
+                            <div class="time-label">MOVE</div>
+                            <div class="activity">JR <span class="highlight">Miyakoji Rapid</span> Kyoto→Nara (~45m) or Kintetsu alt</div>
                             <a href="https://maps.google.com/?q=Nara+Station+Japan" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Nara Station
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">10:00 AM</div>
-                            <div class="activity"><span class="highlight">Nara Park</span> & Sacred Deer</div>
+                            <div class="time-label">SEE</div>
+                            <div class="activity"><span class="highlight">Nara Park</span> deer; <span class="highlight">Tōdai‑ji</span> Great Buddha; <span class="highlight">Kasuga Taisha</span></div>
                             <a href="https://maps.google.com/?q=Nara+Park+Japan" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Nara Park
                             </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">11:30 AM</div>
-                            <div class="activity"><span class="highlight">Todai-ji Temple</span> (Giant Buddha)</div>
                             <a href="https://maps.google.com/?q=Todai-ji+Temple+Nara" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Todai-ji Temple
                             </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">1:00 PM</div>
-                            <div class="activity">Traditional Nara lunch</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">3:00 PM</div>
-                            <div class="activity"><span class="highlight">Kasuga Taisha Shrine</span> (1000+ lanterns)</div>
                             <a href="https://maps.google.com/?q=Kasuga+Taisha+Shrine+Nara" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Kasuga Taisha Shrine
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">6:00 PM</div>
-                            <div class="activity">Return to Kyoto</div>
+                            <div class="time-label">EAT</div>
+                            <div class="activity">Kakinoha‑zushi; fresh mochi; cafés in Naramachi</div>
                         </div>
                     </div>
                     <div class="info-box must">
                         <h4>🚇 Kyoto ⇄ Nara Travel Guide</h4>
-                        <p>• <strong>Route:</strong> Kyoto Station → Nara Station (JR Nara Line)</p>
                         <p>• <strong>Journey Time:</strong> 45 minutes direct train</p>
-                        <p>• <strong>Cost:</strong> ¥720 one way (covered by JR Pass)</p>
-                        <p>• <strong>Frequency:</strong> Trains every 30 minutes</p>
                         <p>• <strong>Walking:</strong> Nara Park is 10-min walk from station</p>
-                        <p>• <strong>Day Trip Tip:</strong> Return trains run until 11:30 PM</p>
                         <p>• <strong>Deer Feeding:</strong> Buy deer crackers (shika senbei) ¥200 for 8-10 pieces</p>
                         <p>• <strong>Todai-ji Tip:</strong> Entry fee ¥600, allow 2+ hours for visit</p>
                     </div>
@@ -1832,121 +1783,107 @@
                 <div class="day-header">
                     <div>
                         <div class="day-number">09</div>
-                        <div class="day-title">Golden Pavilion & Departure</div>
+                        <div class="day-title">Kyoto→Tokyo (early) → HND T3 → Fly 13:05</div>
                     </div>
                     <div class="day-date">OCTOBER 10</div>
                 </div>
                 <div class="day-content">
                     <div class="timeline">
                         <div class="timeline-item">
-                            <div class="time-label">8:00 AM</div>
-                            <div class="activity">Early morning <span class="highlight">Kinkaku-ji</span> (Golden Pavilion)</div>
-                            <a href="https://maps.google.com/?q=Kinkaku-ji+Golden+Pavilion+Kyoto" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">10:00 AM</div>
-                            <div class="activity">Check out from Kyoto accommodation</div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">11:00 AM</div>
-                            <div class="activity">Last-minute souvenir shopping at <span class="highlight">Kyoto Station</span></div>
-                            <a href="https://maps.google.com/?q=Kyoto+Station" target="_blank" class="map-btn">
-                                📍 View Map
-                            </a>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="time-label">1:00 PM</div>
-                            <div class="activity">Express train to <span class="highlight">Kansai Airport (KIX)</span></div>
+                            <div class="time-label">MOVE</div>
+                            <div class="activity"><strong>Option A (same‑day):</strong> <strong>Hikari</strong> Kyoto→Shinagawa (~2h40) → Keikyū to <strong>HND T3</strong> (~15–20m). Leave Kyoto <strong>06:30–07:00</strong>.<br><br><strong>Option B (easier):</strong> Travel to Tokyo evening Oct 9; stay near Hamamatsuchō/Takeshiba or Haneda; quick transfer to T3 next morning</div>
                             <a href="https://maps.google.com/?q=Kansai+International+Airport" target="_blank" class="map-btn">
-                                📍 View Map
+                                📍 Haneda Airport T3
                             </a>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">3:00 PM</div>
-                            <div class="activity">Airport check-in & departure procedures</div>
+                            <div class="time-label">SEE</div>
+                            <div class="activity">Quick souvenir stop at Kyoto Station if choosing A</div>
                         </div>
                         <div class="timeline-item">
-                            <div class="time-label">EVENING</div>
-                            <div class="activity">Flight departure ✈️</div>
+                            <div class="time-label">EAT</div>
+                            <div class="activity">Shinkansen bento; light airport meal after check‑in</div>
                         </div>
                     </div>
                     <div class="info-box must">
-                        <h4>✈️ Kyoto → Kansai Airport Travel Guide</h4>
-                        <p>• <strong>Route:</strong> Kyoto Station → Kansai Airport (HARUKA Express)</p>
-                        <p>• <strong>Journey Time:</strong> 75 minutes direct express</p>
-                        <p>• <strong>Cost:</strong> ¥3,570 (covered by JR Pass if still valid)</p>
-                        <p>• <strong>Departure Frequency:</strong> Every 30 minutes from Kyoto</p>
+                        <h4>✈️ Departure Day Travel</h4>
                         <p>• <strong>Check-in Time:</strong> Allow 2+ hours for international flights</p>
-                        <p>• <strong>Luggage Limit:</strong> Most airlines: 23kg checked, 7kg carry-on</p>
-                        <p>• <strong>Tax-Free Shopping:</strong> Available at airport - bring passport & receipts</p>
                         <p>• <strong>Reserve Cash:</strong> Keep ¥4,000+ for train fare & airport meals</p>
+                        <p>• <strong>Final Departure:</strong> BA0006 at 13:05 from HND T3 → London Heathrow T5</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Additional days follow same pattern... -->
         </section>
 
         <!-- Transport Section -->
     <section id="transport" class="content-section" role="tabpanel" tabindex="-1" aria-labelledby="transport-tab">
             <div class="grid">
                 <div class="card">
-                    <span class="card-icon">🎫</span>
-                    <h3>
-                        <a href="https://www.jrpass.com/7-day-pass" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--primary);">
-                            JR Pass Essential
-                        </a>
-                    </h3>
-                    <p style="font-size: 2em; color: var(--primary); margin: 20px 0;">¥29,650</p>
-                    <p style="color: var(--text-secondary);">Per person for 7 days</p>
-                    <ul style="list-style: none; padding: 0; margin-top: 20px;">
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">✓ All Shinkansen trains</li>
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">✓ Airport express trains</li>
-                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">✓ JR local lines</li>
-                        <li style="padding: 0.75rem 0;">✓ Order online before trip</li>
-                    </ul>
-                </div>
-
-                <div class="card">
                     <span class="card-icon">🚄</span>
-                    <h3>Detailed Travel Routes</h3>
+                    <h3>Major Travel Legs</h3>
                     <ul style="list-style: none; padding: 0;">
                         <li style="padding: 1rem 0; border-bottom: 1px solid var(--border);">
                             <strong>Tokyo → Hakone</strong><br>
                             <span style="color: var(--text-secondary);">
                                 <a href="https://www.odakyu.jp/english/romancecar/" target="_blank" style="color: var(--text-secondary); text-decoration: none; border-bottom: 1px dotted var(--primary);">
                                     Odakyu Romance Car
-                                </a> • 85 minutes<br>
-                                Shinjuku → Hakone-Yumoto<br>
-                                Advance reservations recommended
+                                </a> (Shinjuku→Hakone‑Yumoto)<br>
+                                ~80–85 min; reserve seats
                             </span>
                         </li>
                         <li style="padding: 1rem 0; border-bottom: 1px solid var(--border);">
                             <strong>Hakone → Kyoto</strong><br>
                             <span style="color: var(--text-secondary);">
-                                Total: 3h 15min (including transfers)<br>
-                                FUFU HAKONE → Hakone-Yumoto (15min taxi)<br>
-                                Hakone-Yumoto → Odawara (15min local)<br>
-                                Odawara → Kyoto (2h 15min Shinkansen)
+                                Taxi/shuttle to Hakone‑Yumoto (15m) → local to Odawara (15m) → <strong>Hikari</strong> to Kyoto (~2h15)
                             </span>
                         </li>
                         <li style="padding: 1rem 0; border-bottom: 1px solid var(--border);">
-                            <strong>Kyoto ⇄ Nara Day Trip</strong><br>
+                            <strong>Kyoto ↔ Nara</strong><br>
                             <span style="color: var(--text-secondary);">
-                                JR Nara Line • 45 minutes each way<br>
-                                Direct trains every 30 minutes<br>
-                                10-min walk from station to Nara Park
+                                JR <strong>Miyakoji Rapid</strong> ~45 min each way; frequent
                             </span>
                         </li>
                         <li style="padding: 1rem 0;">
-                            <strong>Kyoto → Kansai Airport</strong><br>
+                            <strong>Kyoto → Tokyo (to fly)</strong><br>
                             <span style="color: var(--text-secondary);">
-                                HARUKA Express • 75 minutes<br>
-                                Direct from Kyoto Station<br>
-                                Departs every 30 minutes
+                                <strong>Hikari</strong> ~2h40 → <strong>Shinagawa</strong>, then <strong>Keikyū</strong> (~15–20m) or <strong>Monorail</strong> via Hamamatsuchō to <strong>HND T3</strong>
                             </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">�</span>
+                    <h3>Book in Advance</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>
+                                <a href="https://www.teamlab.art/e/borderless/" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--primary);">
+                                    teamLab Borderless
+                                </a>
+                            </strong> timed tickets (Oct 4) — Arrive 20–30 min early
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>
+                                <a href="https://www.odakyu.jp/english/romancecar/" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--primary);">
+                                    Odakyu Romancecar
+                                </a>
+                            </strong> seats (Oct 5)
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Hikari</strong> seats <strong>Odawara→Kyoto</strong> (Oct 7)
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Hikari</strong> seats <strong>Kyoto→Tokyo</strong> (Oct 10 early) to connect to HND T3
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Tea ceremony</strong> (Oct 8) + optional <strong>wagashi</strong> class (Kyoto)
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Kyoto kaiseki dinner</strong> (one night)
+                        </li>
+                        <li style="padding: 0.75rem 0;">
+                            <strong>Tokyo head spa + barber</strong> (Oct 4 window)
                         </li>
                     </ul>
                 </div>
@@ -1961,19 +1898,41 @@
                                     Luggage Forwarding
                                 </a>
                             </strong><br>
-                            <span style="color: var(--text-secondary);">Yamato Takkyubin - next day delivery ¥1,500-2,500</span>
+                            <span style="color: var(--text-secondary);">Yamato/TA‑Q‑BIN hotel↔hotel; travel light on trains</span>
                         </li>
                         <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
                             <strong>Seat Reservations</strong><br>
-                            <span style="color: var(--text-secondary);">Book Mount Fuji side seats (right side Tokyo→Kyoto)</span>
+                            <span style="color: var(--text-secondary);">Book right-side window seats for Mount Fuji views (Odawara→Kyoto)</span>
                         </li>
                         <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
                             <strong>Platform Navigation</strong><br>
-                            <span style="color: var(--text-secondary);">Follow English signs, arrive 10-15 minutes early</span>
+                            <span style="color: var(--text-secondary);">Arrive 10–15 min early; bilingual signage; queue at car markers</span>
                         </li>
                         <li style="padding: 0.75rem 0;">
-                            <strong>IC Card Usage</strong><br>
-                            <span style="color: var(--text-secondary);">Suica/Pasmo for local transport, reload at machines</span>
+                            <strong>Etiquette</strong><br>
+                            <span style="color: var(--text-secondary);">Quiet on trains; no eating on local lines; stand left on escalators (right in Osaka)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">🧰</span>
+                    <h3>Essentials for Travel</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Emergency:</strong> Police <strong>110</strong> • Ambulance/Fire <strong>119</strong> • JNTO Tourist Hotline <strong>050‑3816‑2787</strong>
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Embassy (GR):</strong> <strong>03‑3403‑0871</strong> (Tokyo)
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Cash:</strong> 7‑Eleven & JP Bank ATMs work with foreign cards; carry coins
+                        </li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
+                            <strong>Connectivity:</strong> Pocket Wi‑Fi / eSIM; test before leaving the airport
+                        </li>
+                        <li style="padding: 0.75rem 0;">
+                            <strong>Power:</strong> Type A/B plugs • 100V (most chargers dual‑voltage)
                         </li>
                     </ul>
                 </div>
@@ -1988,15 +1947,15 @@
                                     Google Maps
                                 </a>
                             </strong><br>
-                            <span style="color: var(--text-secondary);">Download offline maps</span>
+                            <span style="color: var(--text-secondary);">Download offline maps; best for general navigation</span>
                         </li>
                         <li style="padding: 0.75rem 0; border-bottom: 1px solid var(--border);">
                             <strong>
-                                <a href="https://hyperdia.com/" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--primary);">
-                                    Hyperdia
+                                <a href="https://www.navitime.co.jp/pcstorage/html/japan_travel/english/" target="_blank" style="color: var(--text); text-decoration: none; border-bottom: 1px dotted var(--primary);">
+                                    Japan Transit Planner/NAVITIME
                                 </a>
                             </strong><br>
-                            <span style="color: var(--text-secondary);">Train schedules & routes</span>
+                            <span style="color: var(--text-secondary);">Detailed train schedules & routes</span>
                         </li>
                         <li style="padding: 0.75rem 0;">
                             <strong>
@@ -2004,14 +1963,150 @@
                                     Google Translate
                                 </a>
                             </strong><br>
-                            <span style="color: var(--text-secondary);">Camera translation feature</span>
+                            <span style="color: var(--text-secondary);">Camera translation feature for menus & signs</span>
                         </li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        
+        <!-- To-Do Checklist Section -->
+        <section id="checklist" class="content-section" role="tabpanel" tabindex="-1" aria-labelledby="checklist-tab">
+            <div class="grid">
+                <div class="card">
+                    <span class="card-icon">📋</span>
+                    <h3>6–8 weeks out (High Priority)</h3>
+                    <div class="checklist" style="margin-top: 1.25rem;">
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Book <strong>Kyoto hotel (Oct 7–10)</strong> — Gion/Ponto‑chō or riverside; free‑cancel if possible</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Buy <strong>teamLab Borderless</strong> tickets (Oct 4)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Reserve <strong>Odakyu Romancecar</strong> (Oct 5 ~11:30)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Reserve <strong>Hikari</strong> seats <strong>Odawara→Kyoto</strong> (Oct 7)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Book <strong>tea ceremony</strong> (Oct 8) + optional <strong>wagashi</strong> class</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Book <strong>head spa</strong> (Oct 4 afternoon/evening) + <strong>barber</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">🎯</span>
+                    <h3>2–4 weeks out (Medium Priority)</h3>
+                    <div class="checklist" style="margin-top: 1.25rem;">
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Decide <strong>JR Pass vs point‑to‑point</strong> (this route usually favors point‑to‑point)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Create <strong>smartEX</strong> account + add card (for shinkansen)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Plan <strong>luggage forwarding</strong> Tokyo→Kyoto (mesm → Kyoto hotel)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Make <strong>Kyoto kaiseki</strong> dinner reservation (one night)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">📱</span>
+                    <h3>1–2 weeks out</h3>
+                    <div class="checklist" style="margin-top: 1.25rem;">
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Order <strong>eSIM</strong> or <strong>pocket Wi‑Fi</strong> (High)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Notify <strong>banks</strong> & enable overseas</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Install <strong>transit/translate apps</strong> & enable offline</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Reserve <strong>Hikari</strong> seats <strong>Kyoto→Tokyo</strong> (Oct 10 early)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Choose <strong>Option A or B</strong> for Oct 9/10 (book a Tokyo hotel if B)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">🎒</span>
+                    <h3>Final 2–3 days</h3>
+                    <div class="checklist" style="margin-top: 1.25rem;">
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Download <strong>offline maps</strong> (Tokyo/Kyoto/Osaka/Nara)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Pack <strong>power adapters</strong> (Type A/B), chargers, umbrella/jacket</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Pack <strong>walking shoes</strong>, blister kit, daypack + coin purse</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Meds + translations & mini <strong>first‑aid</strong>; copies of <strong>passport</strong> & <strong>insurance</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-icon">🗾</span>
+                    <h3>On arrival (Oct 2) & Specific Actions</h3>
+                    <div class="checklist" style="margin-top: 1.25rem;">
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span>Buy <strong>Welcome Suica/PASMO</strong>; cash at <strong>7‑Eleven ATM</strong>; pick up Wi‑Fi/eSIM</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span><strong>Oct 5:</strong> Board <strong>Romancecar</strong> (be at platform <strong>20 min early</strong>)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span><strong>Oct 7:</strong> <strong>Hikari</strong> to Kyoto (be <strong>15 min early</strong>; right‑side window for Fuji)</span>
+                        </div>
+                        <div class="checklist-item" onclick="toggleCheck(this)">
+                            <div class="checkbox"></div>
+                            <span><strong>Oct 10:</strong> Kyoto→Tokyo early, then <strong>HND T3</strong>; aim to be at airport <strong>~10:00</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box tips mt-4">
+                <h4>Two departure options for Oct 9/10</h4>
+                <p><strong>Option A (same‑day):</strong> <strong>Hikari</strong> Kyoto→Shinagawa (~2h40) → Keikyū to <strong>HND T3</strong> (~15–20m). Leave Kyoto <strong>06:30–07:00</strong>.</p>
+                <p><strong>Option B (easier):</strong> Travel to Tokyo evening Oct 9; stay near Hamamatsuchō/Takeshiba or Haneda; quick transfer to T3 next morning.</p>
+            </div>
+        </section>
 
         <!-- Essentials Section -->
     <section id="essentials" class="content-section" role="tabpanel" tabindex="-1" aria-labelledby="essentials-tab">
