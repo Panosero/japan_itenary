@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="color-scheme" content="light dark">
     <title>Panos & Athina | Japan 2025</title>
     <style>
         * {
@@ -29,6 +30,34 @@
             --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Dark theme (manual override) */
+        html[data-theme="dark"] {
+            --background: #0B1220;
+            --surface: #0F172A;
+            --surface-hover: #111B2E;
+            --border: #1F2A44;
+            --text: #E5E7EB;
+            --text-secondary: #9CA3AF;
+            --text-muted: #6B7280;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.55);
+        }
+
+        /* Respect OS dark mode by default, unless user toggles */
+        @media (prefers-color-scheme: dark) {
+            html:not([data-theme="light"]) {
+                --background: #0B1220;
+                --surface: #0F172A;
+                --surface-hover: #111B2E;
+                --border: #1F2A44;
+                --text: #E5E7EB;
+                --text-secondary: #9CA3AF;
+                --text-muted: #6B7280;
+                --shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+                --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.55);
+            }
+        }
+
         body {
             font-family: 'SF Pro Display', system-ui, -apple-system, sans-serif;
             background: var(--background);
@@ -42,6 +71,27 @@
             -webkit-touch-callout: none;
             -webkit-text-size-adjust: 100%;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* Focus styles */
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+            border-radius: 8px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
         }
 
         /* Modern Background */
@@ -135,6 +185,13 @@
             text-align: right;
         }
 
+        .countdown-tools {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
         .countdown {
             font-size: 2.5rem;
             font-weight: 800;
@@ -167,6 +224,16 @@
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
             -ms-overflow-style: none;
+            position: sticky;
+            top: 0.75rem;
+            z-index: 20;
+            backdrop-filter: saturate(1.2) blur(8px);
+            background-image: linear-gradient(
+                to bottom,
+                color-mix(in hsl, var(--surface) 92%, transparent),
+                color-mix(in hsl, var(--surface) 88%, transparent)
+            );
+            border: 1px solid var(--border);
         }
 
         .nav-tabs::-webkit-scrollbar {
@@ -210,6 +277,7 @@
         .content-section {
             display: none;
             animation: fadeInUp 0.3s ease-out;
+            outline: none;
         }
 
         .content-section.active {
@@ -486,10 +554,28 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
         }
         .checklist-item.checked .checkbox {
             background: var(--primary);
             color: white;
+        }
+
+        .checklist-item:hover { background: var(--surface-hover); }
+
+        .checkbox {
+            width: 1.125rem;
+            height: 1.125rem;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            display: grid;
+            place-items: center;
+            font-size: 0.875rem;
+            line-height: 1;
+            color: white;
+            background: transparent;
+            transition: var(--transition);
         }
 
         /* Japanese Phrases */
@@ -891,6 +977,41 @@
             opacity: 0;
         }
 
+        .loader-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .theme-toggle {
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            padding: 0.5rem 0.75rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover { background: var(--surface-hover); }
+
+        /* Reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .bg-animation { animation: none; }
+            .content-section { animation: none; }
+            * { scroll-behavior: auto; }
+        }
     </style>
 </head>
 <body>
@@ -910,21 +1031,27 @@
                 </div>
             </div>
             <div class="countdown-section">
-                <div class="countdown" id="countdown">--</div>
+                <div class="countdown-tools">
+                    <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false" title="Toggle theme">
+                        <span aria-hidden="true">🌙</span>
+                        <span class="sr-only">Toggle dark mode</span>
+                    </button>
+                </div>
+                <div class="countdown" id="countdown" aria-live="polite" aria-atomic="true">--</div>
                 <div class="countdown-label">Days Until Departure</div>
             </div>
         </header>
 
-        <nav class="nav-tabs">
-            <button class="tab-btn active" onclick="showSection('overview')">Overview</button>
-            <button class="tab-btn" onclick="showSection('itinerary')">Itinerary</button>
-            <button class="tab-btn" onclick="showSection('transport')">Transport</button>
-            <button class="tab-btn" onclick="showSection('essentials')">Essentials</button>
-            <button class="tab-btn" onclick="showSection('japanese')">Japanese</button>
+        <nav class="nav-tabs" role="tablist" aria-label="Sections">
+            <button id="overview-tab" class="tab-btn active" role="tab" aria-selected="true" aria-controls="overview" onclick="showSection('overview', this)">Overview</button>
+            <button id="itinerary-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="itinerary" onclick="showSection('itinerary', this)">Itinerary</button>
+            <button id="transport-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="transport" onclick="showSection('transport', this)">Transport</button>
+            <button id="essentials-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="essentials" onclick="showSection('essentials', this)">Essentials</button>
+            <button id="japanese-tab" class="tab-btn" role="tab" aria-selected="false" aria-controls="japanese" onclick="showSection('japanese', this)">Japanese</button>
         </nav>
 
         <!-- Overview Section -->
-        <section id="overview" class="content-section active">
+    <section id="overview" class="content-section active" role="tabpanel" tabindex="-1" aria-labelledby="overview-tab">
             <div class="grid">
                 <div class="card">
                     <span class="card-icon">🏨</span>
@@ -1000,6 +1127,34 @@
                 </div>
 
                 <div class="card">
+                    <span class="card-icon">🏯</span>
+                    <h3>Kyoto Accommodation</h3>
+                    <div style="background: var(--surface-hover); padding: 1.5rem; border-radius: calc(var(--border-radius) / 2); margin-bottom: 1.5rem; border-left: 4px solid var(--primary);">
+                        <h4 style="color: var(--primary); margin: 0 0 0.5rem 0; font-size: 1.125rem;">
+                            <a href="https://maps.google.com/?q=Dusit+Thani+Kyoto" target="_blank" style="color: var(--primary); text-decoration: none; border-bottom: 1px dotted var(--primary);">
+                                Dusit Thani Kyoto ⭐⭐⭐⭐⭐
+                            </a>
+                        </h4>
+                        <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem;">2 adults • 3 nights • 1 room</p>
+                        <div style="display: flex; gap: 2rem; margin-top: 1rem;">
+                            <div>
+                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Check-in</span>
+                                <p style="margin: 0; font-weight: 600; color: var(--text);">Tue 7 Oct 2025</p>
+                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">15:00 - 00:00</p>
+                            </div>
+                            <div>
+                                <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Check-out</span>
+                                <p style="margin: 0; font-weight: 600; color: var(--text);">Fri 10 Oct 2025</p>
+                                <p style="margin: 0; color: var(--text-secondary); font-size: 0.875rem;">until 12:00</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <a href="https://maps.google.com/?q=Dusit+Thani+Kyoto" target="_blank" class="map-btn">📍 View Map</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
                     <span class="card-icon">🗾</span>
                     <h3>5 Cities Experience</h3>
                     <ul style="list-style: none; padding: 0;">
@@ -1054,7 +1209,7 @@
         </section>
 
         <!-- Itinerary Section -->
-        <section id="itinerary" class="content-section">
+    <section id="itinerary" class="content-section" role="tabpanel" tabindex="-1" aria-labelledby="itinerary-tab">
             <div class="day-card">
                 <div class="day-header">
                     <div>
@@ -1301,7 +1456,7 @@
                         </div>
                     </div>
                     <div class="info-box must">
-                        <h4>�️ Hakone Extended Experience</h4>
+                        <h4>⛰️ Hakone Extended Experience</h4>
                         <p>• Try the famous Hakone black eggs at Owakudani - said to add 7 years to life!</p>
                         <p>• Hakone Shrine's red torii gate in Lake Ashi is iconic - best photos in afternoon</p>
                         <p>• Open-Air Museum combines art with nature - perfect for rainy weather</p>
@@ -1344,7 +1499,10 @@
                         </div>
                         <div class="timeline-item">
                             <div class="time-label">3:00 PM</div>
-                            <div class="activity">Check into Kyoto accommodation</div>
+                            <div class="activity">Check into <span class="highlight">Dusit Thani Kyoto</span></div>
+                            <a href="https://maps.google.com/?q=Dusit+Thani+Kyoto" target="_blank" class="map-btn">
+                                📍 View Map
+                            </a>
                         </div>
                         <div class="timeline-item">
                             <div class="time-label">5:00 PM</div>
@@ -1362,7 +1520,7 @@
                         </div>
                     </div>
                     <div class="info-box food">
-                        <h4>� Kyoto Welcome</h4>
+                        <h4>🏯 Kyoto Welcome</h4>
                         <h4>🚗 Hakone → Kyoto Travel Guide</h4>
                         <p>• <strong>Total Journey:</strong> 3 hours 15 minutes (hotel to Kyoto accommodation)</p>
                         <p>• <strong>Step 1:</strong> FUFU HAKONE → Hakone-Yumoto (15 min taxi/shuttle)</p>
@@ -1551,7 +1709,7 @@
         </section>
 
         <!-- Transport Section -->
-        <section id="transport" class="content-section">
+    <section id="transport" class="content-section" role="tabpanel" tabindex="-1" aria-labelledby="transport-tab">
             <div class="grid">
                 <div class="card">
                     <span class="card-icon">🎫</span>
@@ -1675,7 +1833,7 @@
         
 
         <!-- Essentials Section -->
-        <section id="essentials" class="content-section">
+    <section id="essentials" class="content-section" role="tabpanel" tabindex="-1" aria-labelledby="essentials-tab">
             <div class="grid">
                 <div class="card">
                     <span class="card-icon">🚨</span>
@@ -1789,7 +1947,7 @@
         </section>
 
         <!-- Japanese Section -->
-        <section id="japanese" class="content-section">
+    <section id="japanese" class="content-section" role="tabpanel" tabindex="-1" aria-labelledby="japanese-tab">
             <h2 style="margin-bottom: 2.5rem; text-align: center; color: var(--text);">Essential Japanese Phrases</h2>
             
             <div class="phrase-grid">
@@ -1909,7 +2067,7 @@
          * Shows the selected section and updates navigation state
          * @param {string} sectionId - The ID of the section to show
          */
-        function showSection(sectionId) {
+        function showSection(sectionId, btnEl) {
             if (!sectionId) {
                 console.warn('Section ID is required');
                 return;
@@ -1921,16 +2079,25 @@
             
             // Deactivate all tab buttons
             const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            });
             
             // Show selected section and activate corresponding button
             const targetSection = document.getElementById(sectionId);
             if (targetSection) {
                 targetSection.classList.add('active');
-                event.target.classList.add('active');
+                if (btnEl instanceof HTMLElement) {
+                    btnEl.classList.add('active');
+                    btnEl.setAttribute('aria-selected', 'true');
+                }
                 
                 // Smooth scroll to top
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Move focus to the active panel for a11y
+                targetSection.focus({ preventScroll: true });
             } else {
                 console.warn(`Section with ID '${sectionId}' not found`);
             }
@@ -2082,7 +2249,8 @@
             const originalShowSection = window.showSection;
             
             window.showSection = function(sectionId) {
-                originalShowSection(sectionId);
+                // Forward all arguments, including clicked button
+                originalShowSection.apply(window, arguments);
                 if (window.innerWidth <= MOBILE_BREAKPOINT) {
                     setTimeout(scrollActiveTabIntoView, 100);
                 }
@@ -2104,6 +2272,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadChecklist();
             initializeMobileEnhancements();
+            initializeTheme();
+            wireThemeToggle();
         });
 
         // Keyboard Navigation Enhancement
@@ -2127,6 +2297,52 @@
         
         // Initialize keyboard navigation
         initializeKeyboardNavigation();
+
+        // Theme toggle with persistence
+        const THEME_STORAGE_KEY = 'japan_theme_v1';
+
+        function applyTheme(theme) {
+            const html = document.documentElement;
+            if (theme === 'dark') {
+                html.setAttribute('data-theme', 'dark');
+            } else if (theme === 'light') {
+                html.setAttribute('data-theme', 'light');
+            } else {
+                html.removeAttribute('data-theme');
+            }
+        }
+
+        function initializeTheme() {
+            try {
+                const saved = localStorage.getItem(THEME_STORAGE_KEY);
+                if (saved) applyTheme(saved);
+            } catch {}
+        }
+
+        function wireThemeToggle() {
+            const toggle = document.getElementById('themeToggle');
+            if (!toggle) return;
+
+            // Sync initial pressed state with applied theme
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            toggle.setAttribute('aria-pressed', String(isDark));
+            toggle.firstElementChild && (toggle.firstElementChild.textContent = isDark ? '🌙' : '☀️');
+
+            toggle.addEventListener('click', () => {
+                const html = document.documentElement;
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : current === 'light' ? null : 'dark';
+                applyTheme(next);
+                try {
+                    if (next) localStorage.setItem(THEME_STORAGE_KEY, next);
+                    else localStorage.removeItem(THEME_STORAGE_KEY);
+                } catch {}
+
+                const pressed = toggle.getAttribute('aria-pressed') === 'true';
+                toggle.setAttribute('aria-pressed', String(!pressed));
+                toggle.firstElementChild && (toggle.firstElementChild.textContent = next === 'dark' ? '🌙' : '☀️');
+            });
+        }
     </script>
 </body>
 </html>
